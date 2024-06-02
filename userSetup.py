@@ -1,0 +1,2 @@
+from autoSetProject import autoSetProject
+
