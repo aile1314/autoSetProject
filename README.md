@@ -1,0 +1,2 @@
+# autoSetProject
+Autodesk Mayaでシーンファイルを開いたとき、自動でプロジェクトセットとオートセーブの保存先を設定するpythonのプログラムです。
