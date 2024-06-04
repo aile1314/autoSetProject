@@ -5,12 +5,14 @@ Autodesk Mayaでシーンファイルを開いたとき、自動でプロジェ�
 Maya2023で起動確認しました。
 「autoSetProject」フォルダーと「userSetup.py」ファイルをドキュメントにあるMayaのスクリプトファイルに設置するだけです。
 
-すでに「userSetup.py」ファイルがあるならそこに「from autoSetProject import autoSetProject」を追加すれば使えるようになります。
+すでに「userSetup.py」ファイルがあるならそこに「from autoSetProject import autoSetProject」と「from autoSetProject import autosave」を追加すれば使えるようになります。
 
 # <実装機能>
 ・Mayaのファイルを開いた際にそのファイルがあるプロジェクトを見つけ、セットします。
 
 ・セットしたプロジェクトの「autosave」フォルダーに開いたファイルと同名のフォルダーを作成し、10分ごとに作業しているファイルを保存します。
 
-# ＜使用時の注意＞
-Maya標準のオートセーブ機能は切っておいてください。同時に使用するとクラッシュします。
+# ＜変更点（2024/06/04）＞
+・一つになっていたファイルをセットプロジェクト用とアートセーブ用に変更
+
+・オートセーブ機能はMaya標準のものを使用

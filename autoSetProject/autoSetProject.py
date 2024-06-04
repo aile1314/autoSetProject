@@ -1,7 +1,5 @@
 import maya.cmds as cmds
 import os
-import time
-import threading
 
 def set_project_on_scene_open():
     # 現在のシーンのファイルパスを取得
@@ -18,7 +16,6 @@ def set_project_on_scene_open():
             # workspace.melが見つかったディレクトリをプロジェクトとして設定
             cmds.workspace(workspace_mel_dir, openWorkspace=True)
             print(f"Project set to: {workspace_mel_dir}")
-            start_autosave(workspace_mel_dir, scene_path)
         else:
             print("Workspace.mel not found in parent directories. Project not set.")
     else:
@@ -37,28 +34,6 @@ def find_workspace_mel_dir(start_dir):
             break
         current_dir = parent_dir
     return None
-
-def start_autosave(project_dir, scene_path):
-    # オートセーブディレクトリを作成
-    scene_name = os.path.splitext(os.path.basename(scene_path))[0]
-    autosave_dir = os.path.join(project_dir, 'autosave', scene_name)
-    if not os.path.exists(autosave_dir):
-        os.makedirs(autosave_dir)
-    
-    # オートセーブスレッドを開始
-    autosave_thread = threading.Thread(target=autosave_function, args=(autosave_dir, scene_name))
-    autosave_thread.daemon = True  # スレッドがメインスレッドと共に終了するように設定
-    autosave_thread.start()
-
-def autosave_function(autosave_dir, scene_name):
-    while True:
-        # 10分ごとにシーンを保存
-        time.sleep(600)
-        timestamp = time.strftime("%Y%m%d_%H%M%S")
-        save_path = os.path.join(autosave_dir, f"{scene_name}_{timestamp}.ma")
-        cmds.file(rename=save_path)
-        cmds.file(save=True, type='mayaAscii')
-        print(f"Auto-saved scene to: {save_path}")
 
 # コールバックを登録
 callbacks = []
