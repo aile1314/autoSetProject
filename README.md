@@ -5,7 +5,7 @@ Autodesk Mayaでシーンファイルを開いたとき、自動でプロジェ�
 Maya2023で起動確認しました。
 「autoSetProject」フォルダーと「userSetup.py」ファイルをドキュメントにあるMayaのスクリプトファイルに設置するだけです。
 
-すでに「userSetup.py」ファイルがあるならそこに「from autoSetProject import autoSetProject」を追加すれば使えるようになります。
+すでに「userSetup.py」ファイルがあるならそこに「from autoSetProject import autoSetProject」と「from autoSetProject import autosave」を追加すれば使えるようになります。
 
 # <実装機能>
 ・Mayaのファイルを開いた際にそのファイルがあるプロジェクトを見つけ、セットします。
