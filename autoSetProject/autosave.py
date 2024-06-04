@@ -24,6 +24,7 @@ def set_autosave_directory():
     
     # オートセーブの設定を更新
     cmds.autoSave(en=True)  # オートセーブを有効化
+    cmds.autoSave(dst=1)
     #cmds.autoSave(saveInBackground=True)  # バックグラウンドで保存を有効化
     cmds.autoSave(fol=autosave_dir)  # オートセーブのディレクトリを設定
     #cmds.autoSave(maxBackups=10)  # バックアップの最大数を設定（例: 10）
